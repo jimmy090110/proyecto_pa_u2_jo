@@ -6,8 +6,10 @@ import com.example.demo.uce.modelo.Estudiante;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Repository
+@Transactional
 public class EstuanteRepoImpl implements IEstudianteRepo{
 
 	@PersistenceContext
@@ -36,7 +38,7 @@ public class EstuanteRepoImpl implements IEstudianteRepo{
 	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		Estudiante estu = this.buscar(id);
-		this.entityManager.refresh(estu);
+		this.entityManager.remove(estu);
 		
 	}
 
