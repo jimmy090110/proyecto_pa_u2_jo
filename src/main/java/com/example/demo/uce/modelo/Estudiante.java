@@ -33,7 +33,18 @@ public class Estudiante {
 	@Column(name="estu_ciudad")
 	private String ciudad;
 	
+	@Column(name="estu_pais")
+	private String pais;
+	
 	//SET AND GET
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
 
 	public Integer getId() {
 		return id;
