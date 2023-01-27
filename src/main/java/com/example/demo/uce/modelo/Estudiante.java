@@ -1,10 +1,15 @@
 package com.example.demo.uce.modelo;
 
+
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -36,10 +41,30 @@ public class Estudiante {
 	@Column(name="estu_pais")
 	private String pais;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name= "estu_id_col")
+	private Colegio colegio;
+	
+	
+	
 	//SET AND GET
+
+	@Override
+	public String toString() {
+		return "Estudiante [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", genero=" + genero
+				+ ", cedula=" + cedula + ", ciudad=" + ciudad + ", pais=" + pais + ", colegio=" + colegio + "]";
+	}
 
 	public String getPais() {
 		return pais;
+	}
+
+	public Colegio getColegio() {
+		return colegio;
+	}
+
+	public void setColegio(Colegio colegio) {
+		this.colegio = colegio;
 	}
 
 	public void setPais(String pais) {
